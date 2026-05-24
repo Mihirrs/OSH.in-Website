@@ -359,6 +359,85 @@ p:last-child {
   box-shadow: 0 4px 16px rgba(20, 200, 200, 0.3);
 }
 
+/* ── Header dropdown menus ── */
+
+.header-nav > li {
+  position: relative;
+}
+
+.has-dropdown > a {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.has-dropdown > a::after {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  opacity: 0.5;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  flex-shrink: 0;
+  margin-left: 1px;
+}
+
+.has-dropdown:hover > a::after,
+.has-dropdown:focus-within > a::after {
+  transform: rotate(225deg) translateY(2px);
+  opacity: 0.8;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 215px;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 8px 28px rgba(26, 46, 46, 0.11);
+  padding: 0.4rem;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s 0.18s;
+  z-index: 300;
+}
+
+.has-dropdown:hover > .dropdown,
+.has-dropdown:focus-within > .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s;
+}
+
+.dropdown li a {
+  display: block;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-mid);
+  border-radius: 6px;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.14s ease, color 0.14s ease;
+}
+
+.dropdown li a:hover {
+  background: var(--cyan-pale);
+  color: var(--cyan-deep);
+}
+
+.dropdown li + li {
+  margin-top: 1px;
+}
+
 /* ── Generic site-nav (for pages using the BEM pattern) ── */
 
 .site-logo {
@@ -1470,13 +1549,13 @@ p:last-child {
    FOOTER
    ============================================================ */
 
-/* Homepage footer (flat layout) */
+/* Homepage footer (hierarchical layout) */
 footer {
   background: var(--white);
   border-top: 2px solid var(--border);
   padding: 3rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
   gap: 2rem;
 }
 
@@ -1550,6 +1629,63 @@ footer {
 }
 
 .f-contact-val a:hover { text-decoration: underline; }
+
+/* Footer hierarchical nav columns */
+.f-nav-col { display: flex; flex-direction: column; }
+
+.f-nav-parent {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  text-decoration: none;
+  margin-bottom: 0.85rem;
+  transition: color 0.2s;
+}
+
+.f-nav-parent:hover { color: var(--cyan-dark); }
+
+.f-nav-children { list-style: none; margin-bottom: 1.1rem; }
+.f-nav-children li { margin-bottom: 0.4rem; }
+
+.f-nav-children a {
+  font-size: 0.85rem;
+  color: var(--ink-mid);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.f-nav-children a:hover { color: var(--cyan-dark); }
+
+.f-nav-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-top: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+/* Compact contact in brand column */
+.f-contact-compact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.85rem;
+}
+
+.f-contact-compact a {
+  font-size: 0.8rem;
+  color: var(--cyan-dark);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.f-contact-compact a:hover { text-decoration: underline; }
 
 /* Dark footer variant (for inner pages) */
 .site-footer {
@@ -2989,7 +3125,8 @@ hr,
   .proof-grid         { grid-template-columns: 1fr; gap: 1rem; }
   .pathways-grid      { grid-template-columns: 1fr; }
 
-  footer              { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; }
+  footer              { grid-template-columns: 1fr 1fr; padding: 2.5rem 1.5rem; }
+  footer .f-brand     { grid-column: 1 / -1; }
 }
 
 /* ============================================================
@@ -3038,6 +3175,9 @@ hr,
    ============================================================ */
 
 @media (max-width: 480px) {
+  footer              { grid-template-columns: 1fr; }
+  footer .f-brand     { grid-column: auto; }
+
   .btn-lg { font-size: 1rem; padding: 0.875rem 1.5rem; }
 
   .hero-btns {
