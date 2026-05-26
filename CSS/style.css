@@ -2380,6 +2380,41 @@ hr,
   line-height: 1.7;
 }
 
+/* In-page jump nav (table of contents) */
+.page-toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.75rem 0 0;
+}
+
+.page-toc__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.95rem;
+  border: 1.5px solid var(--cyan-light);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cyan-dark);
+  text-decoration: none;
+  background: transparent;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.page-toc__link::after {
+  content: '↓';
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.page-toc__link:hover {
+  background: var(--cyan-pale);
+  border-color: var(--cyan);
+  color: var(--cyan-deep);
+}
+
 /* Personal note block */
 .founder-note {
   border-left: 4px solid var(--cyan);
