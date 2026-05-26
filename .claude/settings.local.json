@@ -5,7 +5,12 @@
       "Bash(python3 -c ' *)",
       "PowerShell(& powershell -File 's:\\\\Website\\\\_bulk_update.ps1')",
       "PowerShell(& powershell -File 's:\\\\Website\\\\_add_page_toc.ps1')",
-      "PowerShell(& powershell -File 's:\\\\Website\\\\_our_story.ps1')"
+      "PowerShell(& powershell -File 's:\\\\Website\\\\_our_story.ps1')",
+      "PowerShell(New-Item -ItemType Directory -Path 's:\\\\Website\\\\img' -Force)",
+      "PowerShell(Copy-Item 's:\\\\Website\\\\Images\\\\Untitled_design__2_-removebg-preview.png' 's:\\\\Website\\\\img\\\\logo.png')",
+      "PowerShell(Copy-Item 's:\\\\Website\\\\Images\\\\Untitled_design__3_-removebg-preview.png' 's:\\\\Website\\\\img\\\\logo-mark.png')",
+      "PowerShell(Copy-Item 's:\\\\Website\\\\Images\\\\Untitled design \\(4\\).png'                   's:\\\\Website\\\\img\\\\og-image.png')",
+      "PowerShell(& powershell -File 's:\\\\Website\\\\_update_logo.ps1')"
     ]
   }
 }
