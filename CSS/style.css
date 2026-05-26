@@ -2388,7 +2388,8 @@ hr,
   margin: 1.75rem 0 0;
 }
 
-.page-toc__link {
+.page-toc__link,
+.content-body .page-toc__link {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -2409,10 +2410,12 @@ hr,
   opacity: 0.6;
 }
 
-.page-toc__link:hover {
+.page-toc__link:hover,
+.content-body .page-toc__link:hover {
   background: var(--cyan-pale);
   border-color: var(--cyan);
   color: var(--cyan-deep);
+  text-decoration: none;
 }
 
 /* Personal note block */

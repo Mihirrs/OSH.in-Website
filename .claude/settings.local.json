@@ -4,7 +4,8 @@
       "Bash(python3 -)",
       "Bash(python3 -c ' *)",
       "PowerShell(& powershell -File 's:\\\\Website\\\\_bulk_update.ps1')",
-      "PowerShell(& powershell -File 's:\\\\Website\\\\_add_page_toc.ps1')"
+      "PowerShell(& powershell -File 's:\\\\Website\\\\_add_page_toc.ps1')",
+      "PowerShell(& powershell -File 's:\\\\Website\\\\_our_story.ps1')"
     ]
   }
 }
